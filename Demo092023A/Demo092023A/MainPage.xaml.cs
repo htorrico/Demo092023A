@@ -37,13 +37,13 @@ namespace Demo092023A
 
             var swipe1 = new SwipeGestureRecognizer();
             swipe1.Direction = SwipeDirection.Right;
-            swipe1.Swiped += EventSwipeRight;            
+            swipe1.Swiped += EventSwipe;            
             image1.GestureRecognizers.Add(swipe1);
 
 
             var swipe2 = new SwipeGestureRecognizer();
             swipe1.Direction = SwipeDirection.Left;
-            swipe1.Swiped += EventSwipeLeft;
+            swipe1.Swiped += EventSwipe;
             image1.GestureRecognizers.Add(swipe1);
 
 
@@ -81,17 +81,15 @@ namespace Demo092023A
         }
 
 
-        void EventSwipeRight(object sender, EventArgs args)
+        void EventSwipe(object sender, EventArgs args)
         {
-           
+            isVisible = !isVisible;
+            if (isVisible)
                 lblDemo.BackgroundColor = Color.Green;
-           
+            else
+                lblDemo.BackgroundColor = Color.Orange;
         }
 
-        void EventSwipeLeft(object sender, EventArgs args)
-        {
-            lblDemo.BackgroundColor = Color.Green;
-        }
 
 
 
