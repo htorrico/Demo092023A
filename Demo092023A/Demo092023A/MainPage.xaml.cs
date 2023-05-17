@@ -31,6 +31,20 @@ namespace Demo092023A
             tap2.Tapped += EventTapImage;
             lblDemoImage.GestureRecognizers.Add(tap2);
 
+            var pinch1 = new PinchGestureRecognizer();
+            pinch1.PinchUpdated += EventPinch;
+            image1.GestureRecognizers.Add(pinch1);
+
+            var swipe1 = new SwipeGestureRecognizer();
+            swipe1.Direction = SwipeDirection.Right;
+            swipe1.Swiped += EventSwipeRight;            
+            image1.GestureRecognizers.Add(swipe1);
+
+
+            var swipe2 = new SwipeGestureRecognizer();
+            swipe1.Direction = SwipeDirection.Left;
+            swipe1.Swiped += EventSwipeLeft;
+            image1.GestureRecognizers.Add(swipe1);
 
 
         }
@@ -56,7 +70,28 @@ namespace Demo092023A
         }
 
 
+        void EventPinch(object sender, EventArgs args)
+        {
+            isVisible = !isVisible;
+            if (isVisible)
+                lblDemoImage.BackgroundColor= Color.Green;
+            else
+                lblDemoImage.BackgroundColor = Color.Orange;
 
+        }
+
+
+        void EventSwipeRight(object sender, EventArgs args)
+        {
+           
+                lblDemo.BackgroundColor = Color.Green;
+           
+        }
+
+        void EventSwipeLeft(object sender, EventArgs args)
+        {
+            lblDemo.BackgroundColor = Color.Green;
+        }
 
 
 
